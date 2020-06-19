@@ -3,7 +3,7 @@
   const links = document.querySelectorAll('.titles a');
   console.log('links:', links);
 }); */
-
+{
 'use strict';
 
 const titleClickHandler = function(event){
@@ -40,6 +40,8 @@ const titleClickHandler = function(event){
   /* add class 'active' to the correct article */
   targetArticle.classList.add('active');
 
+}
+
   const optArticleSelector = '.post',
       optTitleSelector = '.post-title',
       optTitleListSelector = '.titles';
@@ -52,39 +54,48 @@ const titleClickHandler = function(event){
       console.log(titleList);
       /*funkcja, która usuwa listę linków po lewej stronie */
 
-
       /* for each article */
-      const articles = document.querySelector(optArticleSelector);
-      let html = ";
-      for (let article of articles)
-        article.innerHTML = '';
-        console.log(articles);
+      const articles = document.querySelectorAll(optArticleSelector);
+      console.log('articles', articles);
+      let html = '';
 
-      /* get the article id (odczytanie id artykułu) */
-      const articleId = article.getAttribute(id); /*zamiast article mogłabym użyć też optArticleSelector? */
-      console.log(articleId);
+      for (let article of articles){
+        /* get the article id (odczytanie id artykułu) */
+        const articleId = article.getAttribute('id'); /*zamiast article mogłabym użyć też optArticleSelector? */
+        console.log(articleId);
 
-      /* find the title element (odczytanie tytułu artykułu) */
-      /* get the title from the title element */
-      const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-      console.log(articleTitle)
-      /* jaką funkcję pełni tutaj .innerHTML?  */
+        /* find the title element (odczytanie tytułu artykułu) */
+        const articleTitle = article.querySelector(optTitleSelector).innerHTML;
+        console.log(articleTitle)
 
-      /* create HTML of the link */
-      const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
-      console.log(linkHTML);
+        /* get the title from the title element */
+        const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
+        console.log(linkHTML);
 
-      /* insert link into titleList */
-      html = html + linkHTML;
+        /* create HTML of the link */
+        titleList.insertAdjacentHTML('afterbegin', linkHTML)
 
-    }
-  titleList.innerHTML = html;
+        /* insert link into titleList */
+        html = html + linkHTML;
+      }
+
+      titleList.innerHTML = html;
+
+      const links = document.querySelectorAll('.titles a');
+      console.log(links);
+
+      for(let link of links){
+        link.addEventListener('click', titleClickHandler);
+      }
 }
-
 generateTitleLinks();
 
-const links = document.querySelectorAll('.titles a');
-
-for(let link of links){
-  link.addEventListener('click', titleClickHandler);
 }
+
+/*things to explain later
+- co dokładnie wykonuje innerHTML?
+-  titleList.insertAdjacentHTML('afterbegin', linkHTML); nie do końca rozumiem działanie tej funkcji
+- const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>' - nie rozumiem, kiedy użyć podwójnych a kiedy pojedynczego cudzysłowia.
+- let html = ''; (dlaczego?)
+
+- */

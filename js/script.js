@@ -40,7 +40,7 @@
     /* add class 'active' to the correct article */
     targetArticle.classList.add('active');
 
-  }
+  };
 
   const optArticleSelector = '.post',
     optTitleSelector = '.post-title',
@@ -66,14 +66,14 @@
 
       /* find the title element (odczytanie tytułu artykułu) */
       const articleTitle = article.querySelector(optTitleSelector).innerHTML;
-      console.log(articleTitle)
+      console.log(articleTitle);
 
       /* get the title from the title element */
       const linkHTML = '<li><a href="#' + articleId + '"><span>' + articleTitle + '</span></a></li>';
       console.log(linkHTML);
 
       /* create HTML of the link */
-      titleList.insertAdjacentHTML('afterbegin', linkHTML)
+      titleList.insertAdjacentHTML('afterbegin', linkHTML);
 
       /* insert link into titleList */
       html = html + linkHTML;
@@ -89,7 +89,7 @@
     }
   }
   generateTitleLinks();
-  k
+  
 }
 
 /*things to explain later

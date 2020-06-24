@@ -91,7 +91,7 @@
   }
   generateTitleLinks();
 
-}
+
 
 function generateTags() {
   console.log('Tag was generated');
@@ -114,7 +114,7 @@ function generateTags() {
     console.log(articleTags);
 
     /* split tags into array */
-    const articleTagsArray = articleTags.split(' ');
+    const articleTagsArray = articleTags.split('  ');
     console.log(articleTagsArray);
 
     /* START LOOP: for each tag */
@@ -122,7 +122,7 @@ function generateTags() {
       console.log(tag);
 
       /* generate HTML of the link */
-      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + ' ' + '</span></a></li>';
+      const linkHTML = '<li><a href="#tag-' + tag + '"><span>' + tag + '  ' + '</span></a></li>';
       console.log(linkHTML);
 
       /* add generated code to html variable */
@@ -226,13 +226,19 @@ function generateAuthors() {
     console.log(articleAuthors);
 
     /* generate HTML of the link */
-    const linkHTML = '<p class="post-author"><a href="#author' + articleAuthor + '">' + articleAuthor + '</a></p>';
+    const linkHTML = '<p class="post-author"><a href="#author' + articleAuthor + '"span>' + articleAuthor + ' ' +  '</span></a></p>';
     console.log(linkHTML);
 
+    /* add generated code to html variable */
+    html = html + linkHTML;
+    console.log('', html)
     /* END LOOP: for every article: */
+    /* insert HTML of all the links into the tags wrapper */
+
     authorWrapper.innerHTML = html;
   }
 }
+
 generateAuthors();
 
 function authorClickHandler(event) {
@@ -292,7 +298,7 @@ function addClickListenersToAuthors() {
 
 
 addClickListenersToAuthors();
-
+}
 
 
 

@@ -9,7 +9,9 @@
     optTitleSelector = '.post-title',
     optTitleListSelector = '.titles',
     optArticleTagsSelector = '.post-tags .list',
-    optArticleAuthorSelector = '.post-author';
+    optArticleAuthorSelector = '.post-author',
+    optTagsListSelector = '.tags.list';
+
 
   const titleClickHandler = function (event) {
     const clickedElement = this;
@@ -95,6 +97,10 @@
   function generateTags() {
     console.log('Tag was generated');
 
+    /* [NEW] create a new variable allTags with an empty array */
+    let allTags = [];
+
+
     /* find all articles */
     const articles = document.querySelectorAll(optArticleSelector);
     console.log(articles);
@@ -127,6 +133,11 @@
         /* add generated code to html variable */
         html = html + linkHTML;
         console.log(html);
+        /* [NEW] check if this link is NOT already in allTags */
+        if(allTags.indexOf(linkHTML) == -1){
+        /* [NEW] add generated code to allTags array */
+        allTags.push(linkHTML);
+        }
 
         /* END LOOP: for each tag */
       }
@@ -136,6 +147,11 @@
 
       /* END LOOP: for every article: */
     }
+    /* [NEW] find list of tags in right column */
+      const tagList = document.querySelector('.tags');
+      /* [NEW] add html from allTags to tagList */
+      tagList.innerHTML = allTags.join(' ');
+
 
   }
 
@@ -182,7 +198,6 @@
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('[data-tags~="' + tag + '"]');
 
   }
 
@@ -247,7 +262,7 @@
     const href = clickedElement.getAttribute('href');
 
     /* make a new constant "author" and extract author from the "href" constant */
-    const author = href.replace('#author', '');
+    const author = href.replace('#author', '' );
 
     /* find all author links with class active */
     const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author"]');
@@ -274,6 +289,7 @@
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks('[data-author="'+ author +'"]');
 
   }
 
@@ -295,4 +311,5 @@
   addClickListenersToTags();
   generateAuthors();
   addClickListenersToAuthors();
+
 }

@@ -237,7 +237,7 @@
       console.log(articleAuthor);
 
       /* generate HTML of the link */
-      const linkHTML = '<p class="post-author"><a href="#author' + articleAuthor + '"span>' + articleAuthor + ' ' + '</span></a></p>';
+      const linkHTML = '<p><a href="#author' + articleAuthor + '"><span>' + articleAuthor + ' ' + '</span></a></p>';
       console.log(linkHTML);
 
       /* add generated code to html variable */

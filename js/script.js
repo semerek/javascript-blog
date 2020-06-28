@@ -9,6 +9,10 @@
     articleLink: Handlebars.compile(document.querySelector('#template-article-link').innerHTML),
     tagLink: Handlebars.compile(document.querySelector('#template-tag-link').innerHTML),
     authorLink: Handlebars.compile(document.querySelector('#template-author-link').innerHTML),
+    tagCloudLink: Handlebars.compile(document.querySelector('#template-tag-cloud-link').innerHTML),
+    authorCloudLink: Handlebars.compile(document.querySelector('#template-author-cloud-link').innerHTML),
+
+    
 
 };
 
@@ -167,21 +171,32 @@
     /* [NEW] create variable for all links HTML code */
     const tagsParams = calculateTagsParams(allTags);
     console.log('tagsParams:', tagsParams)
-    let allTagsHTML = '';
+    //let allTagsHTML = '';
+    const allTagsData = {tags: []};
+
 
     /* [NEW] START LOOP: for each tag in allTags: */
     for (let tag in allTags) {
       /* [NEW] generate code of a link and add it to allTagsHTML */
-      const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
+    //const tagLinkHTML = calculateTagClass(allTags[tag], tagsParams);
 
-      allTagsHTML += '<li><a class="tag-size-' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>'
-      console.log('all tags html', allTagsHTML);
+      //allTagsHTML += '<li><a class="tag-size-' + calculateTagClass(allTags[tag], tagsParams) + '" href="#tag-' + tag + '">' + tag + ' (' + allTags[tag] + ')</a></li>'
+      //console.log('all tags html', allTagsHTML);
+      //allTagsHTML += tagLinkHTML;
+      allTagsData.tags.push({
+        tag: tag,
+        count: allTags[tag],
+        className: calculateTagClass(allTags[tag], tagsParams)
+      });
+
 
     }
     /* [NEW] END LOOP: for each tag in allTags: */
 
     /*[NEW] add HTML from allTagsHTML to tagList */
-    tagList.innerHTML = allTagsHTML;
+    //tagList.innerHTML = allTagsHTML;
+    tagList.innerHTML = templates.tagCloudLink(allTagsData);
+
 
 
     // znajdowanie ilości występowania tagów
@@ -299,7 +314,8 @@
       console.log(articleAuthor);
 
       /* generate HTML of the link */
-      //const linkHTML = '<p><a href="#author' + articleAuthor + '"><span>' + articleAuthor + ' ' + '</span</a></p>';
+      //const linkHTML = '<p class="post-author"><a href="#author-' + articleAuthor +'">' + articleAuthor + '</a></p>';
+
       const linkHTMLData = {id: articleAuthor, title: articleAuthor};
       const linkHTML = templates.authorLink(linkHTMLData);
 
@@ -313,17 +329,30 @@
       }
 
       /* [NEW] find list of tags in right column */
-      const authorList = document.querySelector('.authors');
+      const authorList = document.querySelector('.authors.list');
       /* [NEW] create variable for all links HTML code */
       const authorsParams = calculateAuthorsParams(allAuthors);
       console.log('authorsParams:', authorsParams)
-      let allAuthorsHTML = '';
+      //let allAuthorsHTML = '';
+      const allAuthorsData = {authors: []};
 
-      for (let articleAuthor in allAuthors) {
-        const authorLinkHTML = calculateAuthorClass(allAuthors[articleAuthor], authorsParams);
-        allAuthorsHTML += '<li><a class="' + calculateAuthorClass(allAuthors[articleAuthor], authorsParams) + '" href="#author-' + articleAuthor + '">' + articleAuthor + ' </a> (' + allAuthors[articleAuthor] + ')' + '</li>';
+
+      for (let author in allAuthors) {
+        //const authorLinkHTML = calculateAuthorClass(allAuthors[author], authorsParams);
+       // allAuthorsHTML += '<li><a class="' + calculateAuthorClass(allAuthors[author], authorsParams) + '" href="#author-' + author + '">' + author + ' </a> (' + allAuthors[author] + ')' + '</li>';
+       
+       allAuthorsData.authors.push({
+        tag: author,
+        count: allAuthors[author],
+        className: calculateAuthorClass(allAuthors[author], authorsParams)
+      });
+
 
       }
+      //authorList.innerHTML = allAuthorsHTML;
+      authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
+
+
 
       authorWrapper.innerHTML = html;
     }

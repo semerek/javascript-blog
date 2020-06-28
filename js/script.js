@@ -270,6 +270,8 @@
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
+    generateTitleLinks('[data-tags~="'+ tag +'"]'); 
+
 
   }
 
@@ -287,7 +289,6 @@
       /* END LOOP: for each link */
     }
   }
-
 
 
 
@@ -416,10 +417,13 @@
       authorLink.classList.add('active');
 
       /* END LOOP: for each found author link */
+
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('[data-author="' + author + '"]');
+    generateTitleLinks('[data-author="'+ author +'"]');
+
+
 
   }
 

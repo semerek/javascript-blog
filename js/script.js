@@ -22,6 +22,7 @@
     optCloudClassPrefix = 'tag-size-';
 
 
+
   const titleClickHandler = function (event) {
     const clickedElement = this;
     event.preventDefault(); /*prevent from scrolling to another section like Wikipedia*/
@@ -59,7 +60,7 @@
   };
 
 
-  const generateTitleLinks = function (customSelector = '') {
+  const generateTitleLinks = function(customSelector = '') {
 
     /* remove contents of titleList */
     const titleList = document.querySelector(optTitleListSelector);
@@ -247,7 +248,6 @@
     }
     clickedElement.classList.add('active');
 
-
     /* find all tag links with "href" attribute equal to the "href" constant */
     const tagLinks = document.querySelectorAll('a[href="' + href + '"]');
 
@@ -262,7 +262,6 @@
 
     /* execute function "generateTitleLinks" with article selector as argument */
     generateTitleLinks('[data-tags~="' + tag + '"]');
-
   };
 
   const addClickListenersToTags = function() {
@@ -337,9 +336,10 @@
           className: calculateAuthorClass(allAuthors[author], authorsParams)
         });
 
+
       }
       //authorList.innerHTML = allAuthorsHTML;
-      authorList.innerHTML = templates.authorCloudLink(allAuthorsData
+      authorList.innerHTML = templates.authorCloudLink(allAuthorsData);
 
       authorWrapper.innerHTML = html;
     }
@@ -423,8 +423,8 @@
 
       /* END LOOP: for each link */
     }
-
   };
+
   generateTitleLinks();
   generateTags();
   addClickListenersToTags();

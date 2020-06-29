@@ -393,7 +393,7 @@
     const href = clickedElement.getAttribute('href');
 
     /* make a new constant "author" and extract author from the "href" constant */
-    const author = href.replace('#author', '');
+    const author = href.replace('#author-', '');
 
     /* find all author links with class active */
     const activeAuthorLinks = document.querySelectorAll('a.active[href^="#author"]');
@@ -421,7 +421,8 @@
     }
 
     /* execute function "generateTitleLinks" with article selector as argument */
-    generateTitleLinks('[data-author="'+ author +'"]');
+    generateTitleLinks('[data-author="' + author + '"]');
+   
 
 
 

@@ -107,4 +107,23 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
-/*# sourceMappingURL=style.css.map */
+.tag-size-1 {
+  font-size: 14px;
+  color:#5d42f5;
+}
+.tag-size-2 {
+  font-size: 18px;
+  color: #5d42f5;
+}
+.tag-size-3 {
+  font-size: 22px;
+  color:#5d42f5;
+}
+.tag-size-4 {
+  font-size: 26px;
+  color:#5d42f5;
+}
+.tag-size-5 {
+  font-size: 30px;
+  color: #5d42f5;
+}

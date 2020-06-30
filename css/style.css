@@ -107,23 +107,56 @@ body {
 .post-tags p {
   margin: 0 10px 0 0;
 }
+
+/*Cloud*/
+.list.tags {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.list.tags a {
+  text-decoration: none;
+}
+
+.list.authors {
+  display: -ms-inline-flexbox;
+  display: inline-flex;
+  -ms-flex-pack: justify;
+      justify-content: space-between;
+  -ms-flex-wrap: wrap;
+      flex-wrap: wrap;
+}
+
+.list.authors a {
+  text-decoration: none;
+}
+
 .tag-size-1 {
-  font-size: 14px;
-  color:#5d42f5;
+  font-size: 16px;
+  color: #42b9f5;
 }
+
 .tag-size-2 {
-  font-size: 18px;
-  color: #5d42f5;
+  font-size: 20px;
+  color: #42b9f5;
 }
+
 .tag-size-3 {
-  font-size: 22px;
-  color:#5d42f5;
+  font-size: 24px;
+  color: #42b9f5;
 }
+
 .tag-size-4 {
-  font-size: 26px;
-  color:#5d42f5;
+  font-size: 28px;
+  color: #42b9f5;
 }
+
 .tag-size-5 {
-  font-size: 30px;
-  color: #5d42f5;
+  font-size: 32px;
+  color: #42b9f5;
 }
+/*# sourceMappingURL=style.css.map */

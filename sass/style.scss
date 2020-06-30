@@ -118,3 +118,43 @@ body {
     margin: 0 10px 0 0;
   }
 }
+
+/*Cloud*/
+
+.list.tags {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  a {
+    text-decoration: none;
+  }
+}
+.list.authors {
+  display: inline-flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  a {
+    text-decoration: none;
+  }
+}
+
+.tag-size-1 {
+  font-size: 16px;
+  color:#42b9f5;
+}
+.tag-size-2 {
+  font-size: 20px;
+  color:#42b9f5;
+}
+.tag-size-3 {
+  font-size: 24px;
+  color: #42b9f5;
+}
+.tag-size-4 {
+  font-size: 28px;
+  color:#42b9f5;
+}
+.tag-size-5 {
+  font-size: 32px;
+  color: #42b9f5;
+}
